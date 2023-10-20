@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ProductListPage {
+public class CatalogPage {
 
     private final BaseFunctions baseFunc;
 
-    public ProductListPage(BaseFunctions baseFunc) {
+    public CatalogPage(BaseFunctions baseFunc) {
         this.baseFunc = baseFunc;
     }
 

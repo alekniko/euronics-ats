@@ -1,6 +1,7 @@
 package euronics.pages;
 
 import euronics.BaseFunctions;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -14,8 +15,8 @@ public class HomePage {
     }
 
     private final By PRODUCT_CATEGORY_ITEMS = By.xpath(".//span[@class = 'nav-item__label-name']");
-    private final By PRODUCT_TYPE_ITEMS = By.xpath("//*[@class='sub-menu__title' and text()='Phones']/..//*[@class='bottom-level__item__title']");
-    private final By DECLINE_BTN = By.xpath("//button[@data-event-name=\"Decline_button\"]");
+    private final By PRODUCT_TYPE_ITEMS = By.xpath(".//*[@class='sub-menu__title' and text()='Phones']/..//*[@class='bottom-level__item__title']");
+    private final By DECLINE_BTN = By.xpath(".//button[@data-event-name='Decline_button']");
 
     public void closeCookiesPopUp () {
         baseFunc.click(DECLINE_BTN);
@@ -31,9 +32,10 @@ public class HomePage {
                 break;
             }
         }
+        Assertions.assertTrue(isClicked);
     }
 
-    public ProductListPage selectProductType(String productTypeName) {
+    public CatalogPage selectProductType(String productTypeName) {
         List<WebElement> menuItems = baseFunc.getElements(PRODUCT_TYPE_ITEMS);
         boolean isClicked = false;
         for (WebElement we : menuItems) {
@@ -43,9 +45,7 @@ public class HomePage {
                 break;
             }
         }
-
-        //Assertion
-
-        return new ProductListPage(baseFunc);
+        Assertions.assertTrue(isClicked);
+        return new CatalogPage(baseFunc);
     }
 }

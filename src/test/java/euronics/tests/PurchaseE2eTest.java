@@ -12,11 +12,6 @@ import java.math.BigDecimal;
 public class PurchaseE2eTest {
     private BaseFunctions baseFunc = new BaseFunctions();
 
-    @AfterEach
-    public void after() {
-//        baseFunc.closeBrowser();
-    }
-
     @Test
     public void purchaseE2eTest() {
         baseFunc.openUrl("www.euronics.lv/en");
@@ -25,16 +20,16 @@ public class PurchaseE2eTest {
         homePage.closeCookiesPopUp();
         homePage.selectProductCategory("Phones");
 
-        ProductListPage productListPage = homePage.selectProductType("iPhone");
+        CatalogPage catalogPage = homePage.selectProductType("iPhone");
 
-        ProductPage productPage = productListPage.selectProduct("Apple iPhone 13, 128 GB, blue - Smartphone");
+        ProductPage productPage = catalogPage.selectProduct("Apple iPhone 13, 128 GB, blue - Smartphone");
         String firstItemName = productPage.getProductName();
         BigDecimal firstItemPrice = productPage.getProductPrice();
         productPage.addProductToCart();
         productPage.pressContinueShoppingBtn();
         baseFunc.returnToPreviousPage();
 
-        productListPage.selectProduct("Apple iPhone 13, 128 GB, green - Smartphone");
+        catalogPage.selectProduct("Apple iPhone 13, 128 GB, green - Smartphone");
         String secondItemName = productPage.getProductName();
         BigDecimal secondItemPrice = productPage.getProductPrice();
         productPage.addProductToCart();
@@ -44,10 +39,10 @@ public class PurchaseE2eTest {
 
         CartPage cartPage = navigationBar.openShoppingCart();
 
-        Assertions.assertEquals(firstItemName, cartPage.getProductName(1), "");
-        Assertions.assertEquals(secondItemName, cartPage.getProductName(2), "");
+        Assertions.assertEquals(firstItemName, cartPage.getProductName(1), "Incorrect item name");
+        Assertions.assertEquals(secondItemName, cartPage.getProductName(2), "Incorrect item name");
 
-        Assertions.assertEquals(firstItemPrice.add(secondItemPrice), cartPage.getTotalPrice(), "");
+        Assertions.assertEquals(firstItemPrice.add(secondItemPrice), cartPage.getTotalPrice(), "Incorrect total amount");
 
         cartPage.continueCheckout();
 
@@ -63,7 +58,10 @@ public class PurchaseE2eTest {
         checkoutPage.selectPaymentMethod("Credit card");
         checkoutPage.clickAcceptTernsCheckBox();
         checkoutPage.clickPayButton();
+    }
 
-
+    @AfterEach
+    public void after() {
+        baseFunc.closeBrowser();
     }
 }

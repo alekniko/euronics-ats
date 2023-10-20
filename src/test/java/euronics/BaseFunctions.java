@@ -18,10 +18,7 @@ public class BaseFunctions {
     public JavascriptExecutor js;
 
     public BaseFunctions() {
-        options = new ChromeOptions();
-//        options.addArguments("--disable-notifications");
-//        System.setProperty("webdriver.chrome.silentOutput", "true");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
@@ -45,30 +42,12 @@ public class BaseFunctions {
         return driver.findElements(locator);
     }
 
-    public void waitElementToBeClickable(By locator) {
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
     public void waitElementDisplayed(By locator) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public void click(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-//        WebElement element = driver.findElement(locator);
-//        try {
-//            waitElementDisplayed(locator);
-//            waitElementToBeClickable(locator);
-//            element.click();
-//        } catch (ElementClickInterceptedException e) {
-//            System.out.println("Can't click on element on a first try");
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException ex) {
-//                throw new RuntimeException(ex);
-//            }
-//            element.click();
-//        }
     }
 
     public void closeBrowser() {
@@ -79,10 +58,6 @@ public class BaseFunctions {
         WebElement e = getElement(locator);
         e.clear();
         e.sendKeys(value);
-    }
-
-    public void pressKey(By locator, Keys key) {
-        getElement(locator).sendKeys(key);
     }
 
     public void scrollToElement (WebElement we) {

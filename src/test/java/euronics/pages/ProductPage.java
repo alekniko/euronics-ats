@@ -12,10 +12,10 @@ public class ProductPage {
         this.baseFunc = baseFunc;
     }
 
-    private final By PRODUCT_NAME = By.xpath("//div[@class='container']//*[@id='product-description']");
-    private final By PRODUCT_PRICE = By.xpath("//div[@class='pricing-block__bottom']//span[@class='price__original']");
-    private final By ADD_TO_CART = By.xpath("//button[@data-target='added-cart-panel']");
-    private final By CONTINUE_SHOPPING_BTN = By.xpath("//button[@ id='continue-button']");
+    private final By PRODUCT_NAME = By.xpath(".//div[@class='container']//*[@id='product-description']");
+    private final By PRODUCT_PRICE = By.xpath(".//div[@class='pricing-block__bottom']//span[@class='price__original']");
+    private final By ADD_TO_CART = By.xpath(".//button[@data-target='added-cart-panel']");
+    private final By CONTINUE_SHOPPING_BTN = By.xpath(".//button[@ id='continue-button']");
 
     public String getProductName() {
         return baseFunc.getElement(PRODUCT_NAME).getText();
