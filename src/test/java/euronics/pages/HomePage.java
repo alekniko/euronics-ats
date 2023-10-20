@@ -18,7 +18,7 @@ public class HomePage {
     private final By PRODUCT_TYPE_ITEMS = By.xpath(".//*[@class='sub-menu__title' and text()='Phones']/..//*[@class='bottom-level__item__title']");
     private final By DECLINE_BTN = By.xpath(".//button[@data-event-name='Decline_button']");
 
-    public void closeCookiesPopUp () {
+    public void closeCookiesPopUp() {
         baseFunc.click(DECLINE_BTN);
     }
 

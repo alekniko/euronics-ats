@@ -58,14 +58,14 @@ public class BaseFunctions {
         e.sendKeys(value);
     }
 
-    public void scrollToElement (WebElement we) {
-        JavascriptExecutor js= (JavascriptExecutor) driver;
+    public void scrollToElement(WebElement we) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true)", we);
 
-       wait.until(ExpectedConditions.elementToBeClickable(we));
+        wait.until(ExpectedConditions.elementToBeClickable(we));
     }
 
-    public void returnToPreviousPage (){
+    public void returnToPreviousPage() {
         driver.navigate().back();
     }
 }

@@ -53,11 +53,11 @@ public class CheckoutPage {
         baseFunc.click(By.xpath(".//div[@role='tablist']/label[contains(text(), '" + methodName + "')]"));
     }
 
-    public void clickAcceptTernsCheckBox () {
+    public void clickAcceptTernsCheckBox() {
         baseFunc.click(ACCEPT_TERMS_CHECK_BOX);
     }
 
-    public void clickPayButton(){
+    public void clickPayButton() {
         baseFunc.click(PAY_BTN);
     }
 }

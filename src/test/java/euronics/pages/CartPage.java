@@ -8,8 +8,8 @@ import java.math.BigDecimal;
 public class CartPage {
     private final BaseFunctions baseFunc;
 
-    public CartPage (BaseFunctions baseFunc) {
-        this.baseFunc= baseFunc;
+    public CartPage(BaseFunctions baseFunc) {
+        this.baseFunc = baseFunc;
     }
 
     private final By ITEM_TITLE = By.xpath(".//a[@class = 'cart-item__title']");
@@ -25,7 +25,7 @@ public class CartPage {
         return new BigDecimal(total);
     }
 
-    public void continueCheckout () {
+    public void continueCheckout() {
         baseFunc.click(CHECKOUT_BTN);
     }
 }
