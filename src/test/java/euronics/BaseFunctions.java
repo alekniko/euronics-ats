@@ -2,7 +2,6 @@ package euronics;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +12,6 @@ import java.util.List;
 public class BaseFunctions {
     private WebDriver driver;
     private WebDriverWait wait;
-    private ChromeOptions options;
     public Actions actions;
     public JavascriptExecutor js;
 
